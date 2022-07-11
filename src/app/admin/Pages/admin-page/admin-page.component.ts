@@ -23,7 +23,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
         console.log(this.listEmployee);
       }),
       (resFail=>{
-        console.log('Error en el servidor', resFail)
+        console.log('Error en el servidor', resFail);
       })
     )
     this.listObservables$ = [observer$];
@@ -31,7 +31,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
    this.listObservables$.forEach(e => e.unsubscribe());
-    console.log('Des');
+   console.log('DesList');
   }
 
   onDelete(id: string): void{
@@ -46,6 +46,20 @@ export class AdminPageComponent implements OnInit, OnDestroy {
       })
     )
     this.listObservables$ = [observer2$];
+  }
+
+  onGet(id: string): void{
+    const observer3$ = this.employeeSvc.getEmployee(id)
+    .subscribe(
+      (resOk=>{
+        const newArray = this.listEmployee.filter(m => m.id != id);
+        this.listEmployee = [...newArray];
+      }),
+      (err=>{
+        console.log('🔴🔴🔴');
+      })
+    )
+    this.listObservables$ = [observer3$];
   }
 
 

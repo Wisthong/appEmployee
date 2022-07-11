@@ -27,7 +27,8 @@
       </ion-select>
     </ion-item>
 
-    <ion-button id="btn" type="submit" expand="full" color="primary">Register</ion-button>
+    <ion-button *ngIf="id!=null" id="btn" type="submit" expand="full" color={{customOption.color}}> {{customOption.name}} </ion-button>
+    <ion-button *ngIf="id==null" id="btn" type="submit" expand="full" color={{customOption.color}}> {{customOption.name}} </ion-button>
   </form>
 </ion-content>
 

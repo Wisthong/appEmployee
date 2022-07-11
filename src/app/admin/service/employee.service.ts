@@ -19,33 +19,36 @@ export class EmployeeService {
 
   //TODO: get All Employees
   getAllEmployees$(): Observable<Employee[]>{
-    return this.http.get<Employee[]>(this.API+'/employees')
-    .pipe(
-      map((resOk)=>{
-        return resOk;
-      })
-    );
+    return this.http.get<Employee[]>(this.API+'/employees');
   }
+
+  // //TODO: get All Employees
+  // getAllEmployees$(): Observable<Employee[]>{
+  //   return this.http.get<Employee[]>(this.API+'/employees')
+  //   .pipe(
+  //     map((resOk)=>{
+  //       return resOk;
+  //     })
+  //   );
+  // }
 
   deleteEmployee(id: string): Observable<string>{
     return this.http.delete<string>(this.API+'/employees/'+id);
   }
 
   //TODO: Create employees
-  createEmployee(employee: Employee){
-    return this.http.post<Employee>(this.API+'/employees/',employee)
-    .pipe(
-      map((res: any)=>{
-        this.getAllEmployees$();
-      })
-    )
-    ;
+  createEmployee(employee: Employee): Observable<Employee>{
+    return this.http.post<Employee>(this.API+'/employees/',employee);
   }
 
-  // createEmployee(employee: Employee): Observable<Employee>{
-  //   return this.http.post<Employee>(this.API+'/employees/',employee)
-  //   ;
-  // }
+  //TODO: Update employee
+  updateEmployee(id:string ,employee: Employee): Observable<Employee>{
+    return this.http.put<Employee>(this.API+'/employees/'+id,employee);
+  }
 
+  //TODO: Get only employee
+  getEmployee(id: string): Observable<Employee>{
+    return this.http.get<Employee>(this.API+'/employees/'+id);
+  }
 
 }
