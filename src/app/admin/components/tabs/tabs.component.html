@@ -1,0 +1,21 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/admin']" routerLinkActive="router-link-active">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+      <ion-badge>10</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/admin/list']" routerLinkActive="router-link-active">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>List</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="['/admin/form']" routerLinkActive="router-link-active">
+      <ion-icon name="person-add"></ion-icon>
+      <ion-label>Register</ion-label>
+    </ion-tab-button>
+
+
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,0 +1,36 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-item>
+      <ion-label position="floating">Name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cellphone <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="cellphone" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Marital Status</ion-label>
+      <ion-select placeholder="Select option" formControlName="maritalstatus">
+        <ion-select-option  *ngFor="let item of listMarital"> {{item}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Etnia</ion-label>
+      <ion-select placeholder="Select option" formControlName="etnia">
+        <ion-select-option *ngFor="let item of listEtnia"> {{item}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button id="btn" type="submit" expand="full" color="primary">Register</ion-button>
+  </form>
+</ion-content>
+
+<ion-item>
+  <app-tabs></app-tabs>
+</ion-item>

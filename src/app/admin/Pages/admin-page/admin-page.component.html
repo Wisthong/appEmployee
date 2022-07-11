@@ -1,0 +1,17 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>List Employee</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <app-list
+    [listEmployee]="listEmployee"
+    (eventDelete)="onDelete($event)"
+    ></app-list>
+  </ion-content>
+  <ion-item>
+    <app-tabs></app-tabs>
+  </ion-item>
+</ion-app>
