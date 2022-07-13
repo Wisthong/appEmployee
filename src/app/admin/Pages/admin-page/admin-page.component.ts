@@ -16,17 +16,25 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+
+    const observer1$ = this.employeeSvc.observerEmployee.subscribe(
+      (resOk=>{
+        this.listEmployee = resOk;
+        console.log('Observer 1', resOk);
+      })
+    );
+
     const observer$ = this.employeeSvc.getAllEmployees$()
     .subscribe(
       (resOk=>{
-        this.listEmployee = resOk;
-        console.log(this.listEmployee);
+//        this.listEmployee = resOk;
+//        console.log(this.listEmployee);
       }),
       (resFail=>{
         console.log('Error en el servidor', resFail);
       })
     )
-    this.listObservables$ = [observer$];
+    this.listObservables$ = [observer$, observer1$];
   }
 
   ngOnDestroy(): void {

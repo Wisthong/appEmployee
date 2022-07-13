@@ -1,6 +1,6 @@
 import { EmployeeService } from './../../service/employee.service';
 import { Employee } from 'src/app/home/interface/employee';
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -75,9 +75,15 @@ export class FormsComponent implements OnInit, OnDestroy {
               color: 'success'
             });
             toast.present();
-            setTimeout(() => {
-              this.router.navigate(['admin']);
-            }, 2000);
+            // setTimeout(() => {
+            //   this.router.navigate(['admin/list']);
+            // }, 2000);
+            this.employeeSvc.getAllEmployees$()
+            .subscribe(resListOk=>{
+              setTimeout(() => {
+                this.router.navigate(['admin/list']);
+              }, 2000);
+            })
           }),
           (async resFail=>{
             const toast = await this.toastController.create({
@@ -104,7 +110,7 @@ export class FormsComponent implements OnInit, OnDestroy {
             toast.present();
             setTimeout(() => {
               //TODO: Redireccionamiento
-              this.router.navigate(['admin']);
+              this.router.navigate(['admin/list']);
             }, 2000);
           }),
           (async resFail=>{
